@@ -2,6 +2,7 @@ package com.example.afinal;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,16 +13,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonPLAY;
     private Button buttonSETTINGS;
     private Button buttonCREDITS;
-
+    MediaPlayer menumusic;
     private SoundPlay sound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        sound = new SoundPlay(this);
-        sound.playMenuMusic();
+        menumusic = MediaPlayer.create(getApplicationContext(), R.raw.menu);
+        menumusic.start();
+        //sound = new SoundPlay(this);
+        //sound.
+        //sound.playMenuMusic();
 
         buttonPLAY = findViewById(R.id.buttonPLAY);
         buttonSETTINGS = findViewById(R.id.buttonSETTINGS);

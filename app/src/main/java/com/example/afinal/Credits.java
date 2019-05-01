@@ -18,7 +18,7 @@ public class Credits extends AppCompatActivity {
         setContentView(R.layout.activity_credits);
 
         sound = new SoundPlay(this);
-        sound.playMenuMusic();
+        //sound.playMenuMusic();
 
 
         //Initializes button to the parameters in result.xml

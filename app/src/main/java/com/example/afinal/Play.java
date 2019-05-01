@@ -332,7 +332,7 @@ public class Play extends AppCompatActivity {
 
         if (start_flg == false) {
             start_flg = true;
-            sound.playGameMusic();
+            //sound.playGameMusic();
 
 
             FrameLayout frame = findViewById(R.id.frame);

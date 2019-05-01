@@ -17,7 +17,7 @@ public class Instructions extends AppCompatActivity {
         setContentView(R.layout.activity_instructions);
 
         sound = new SoundPlay(this);
-        sound.playMenuMusic();
+        //sound.playMenuMusic();
 
 
         //Initializes button to the parameters in result.xml

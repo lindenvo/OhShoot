@@ -44,12 +44,12 @@ public class result extends AppCompatActivity {
 
     public void tryAgain(View view) {
         startActivity(new Intent(getApplicationContext(), Play.class));
-        sound.playLoseMusic();
+        //sound.playLoseMusic();
     }
 
     public void goHome(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        sound.playMenuMusic();
+        //sound.playMenuMusic();
     }
 
 
