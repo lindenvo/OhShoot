@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonCREDITS.setOnClickListener(this);
         buttonSETTINGS.setOnClickListener(this);
-        //instructions_button.setOnClickListener(this);
         buttonPLAY.setOnClickListener(this);
     }
 

@@ -3,6 +3,7 @@ package com.example.afinal;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,6 +52,8 @@ public class Play extends AppCompatActivity {
 
     // Eric's Stuff
     ViewGroup mainLayout;
+    MediaPlayer game;
+    MediaPlayer ow;
 
 
     // Size
@@ -123,7 +126,6 @@ public class Play extends AppCompatActivity {
     // Initalize Class
     private Handler handler = new Handler();
     private Timer timer = new Timer();
-    private SoundPlay sound;
 
     // Status Check
     private boolean action_flg = false;
@@ -136,7 +138,6 @@ public class Play extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-        sound = new SoundPlay(this);
 
         scoreLabel = (TextView) findViewById(R.id.scoreLabel);
         startLabel = (TextView) findViewById(R.id.startLabel);
@@ -214,6 +215,14 @@ public class Play extends AppCompatActivity {
 
         mainLayout = findViewById(R.id.frame);
         stringhini.setOnTouchListener(onTouchListener());
+
+        game = MediaPlayer.create(getApplicationContext(), R.raw.game);
+        ow = MediaPlayer.create(getApplicationContext(), R.raw.ow);
+
+        game.setVolume((float)0.75,(float)0.75 );
+
+        game.start();
+        game.setLooping(true);
     }
 
 
@@ -449,7 +458,7 @@ public class Play extends AppCompatActivity {
                 // Stop Timer!!
                 timer.cancel();
                 timer = null;
-
+                game.stop();
                 // Show result
                 Intent intent = new Intent(getApplicationContext(), result.class);
                 intent.putExtra("SCORE", score);
@@ -667,6 +676,7 @@ public class Play extends AppCompatActivity {
         {
             LIVES -= 1;
             badericX = -10;
+            ow.start();
 
         }
 
@@ -674,21 +684,21 @@ public class Play extends AppCompatActivity {
         {
             LIVES -= 1;
             badericLRX = 1501;
-
+            ow.start();
         }
 
         if (reghitbox >= (Math.abs(badericCenterUDX-stringhiniCenterX) + Math.abs(badericCenterUDY-stringhiniCenterY)))
         {
             LIVES -= 1;
             badericUDX = 2501;
-
+            ow.start();
         }
 
         if (reghitbox >= (Math.abs(badericCenterDUX-stringhiniCenterX) + Math.abs(badericCenterDUY-stringhiniCenterY)))
         {
             LIVES -= 1;
             badericDUX = -10;
-
+            ow.start();
         }
     }
 
@@ -697,7 +707,6 @@ public class Play extends AppCompatActivity {
         if(start_flg == false)
         {
             start_flg = true;
-            sound.playGameMusic();
 
 
             FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
