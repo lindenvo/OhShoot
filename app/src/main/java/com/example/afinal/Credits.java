@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 
 public class Credits extends AppCompatActivity {
 
     private Button finished;
+    private LinearLayout names;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class Credits extends AppCompatActivity {
     }
 
     public void goBack(View v) {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+finish();
     }
 
 }

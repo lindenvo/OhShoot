@@ -56,7 +56,7 @@ public class Play extends AppCompatActivity {
     MediaPlayer ow;
     MediaPlayer impact;
     MediaPlayer hurt;
-
+    MediaPlayer good;
     // Size
     private int frameWidth;
     private int frameHeight;
@@ -156,7 +156,11 @@ public class Play extends AppCompatActivity {
         screenWidth = size.x;
         screenHeight = size.y;
 
+
+
         // Move out of screen
+        stringhini.setX(screenWidth/3);
+        stringhini.setY(screenHeight/99999);
         bettereric.setX(-1000000000);
         bettereric.setY(screenHeight + 80);
         gooderic.setX(-1000000000);
@@ -203,6 +207,7 @@ public class Play extends AppCompatActivity {
         ow = MediaPlayer.create(getApplicationContext(), R.raw.ow);
         impact = MediaPlayer.create(getApplicationContext(), R.raw.impact);
         hurt = MediaPlayer.create(getApplicationContext(), R.raw.hurt);
+        good = MediaPlayer.create(getApplicationContext(), R.raw.good);
 
         game.setVolume((float)0.75,(float)0.75 );
 
@@ -603,8 +608,8 @@ public class Play extends AppCompatActivity {
         int badericCenterDUY = badericDUY + badericDU.getHeight() /2;
 
         //HITBOX SIZE
-        int reghitbox = 100;
-        int smallhitbox = 50;
+        int reghitbox =200;
+        int smallhitbox = 100;
 
 
 
@@ -645,9 +650,13 @@ public class Play extends AppCompatActivity {
 
         if (smallhitbox >= (Math.abs(betterericCenterX-stringhiniCenterX) + Math.abs(betterericCenterY-stringhiniCenterY)))
         {
+            if (LIVES < 3) {
+                LIVES += 1;
+            }
+
             score += 50;
             betterericY = 2001;
-            impact.start();
+            good.start();
 
         }
 
