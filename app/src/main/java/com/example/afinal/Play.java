@@ -1,7 +1,11 @@
+
 package com.example.afinal;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Point;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +13,8 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -16,6 +22,8 @@ import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+//Eric's Stuff
 
 public class Play extends AppCompatActivity {
 
@@ -27,6 +35,10 @@ public class Play extends AppCompatActivity {
     private ImageView baderic;
     private ImageView sleepyeric;
 
+    // Eric's Stuff
+    ViewGroup mainLayout;
+
+
     // Size
     private int frameWidth;
     private int frameHeight;
@@ -35,6 +47,7 @@ public class Play extends AppCompatActivity {
     private int screenHeight;
 
     // Position
+    private int stringhiniX;
     private int stringhiniY;
     private int goodericY;
     private int goodericX;
@@ -57,14 +70,22 @@ public class Play extends AppCompatActivity {
     private boolean action_flg = false;
     private boolean start_flg = false;
 
+    // Eric's Stuff
+    public static int getScreenWidth() {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
+    }
 
+    public static int getScreenHeight() {
+        return Resources.getSystem().getDisplayMetrics().heightPixels;
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
         sound = new SoundPlay(this);
-        sound.playGameMusic();
 
         scoreLabel = findViewById(R.id.scoreLabel);
         startLabel = findViewById(R.id.startLabel);
@@ -94,6 +115,70 @@ public class Play extends AppCompatActivity {
         sleepyeric.setY(-1000000000);
 
         scoreLabel.setText("Score: 0");
+
+        //Eric's Stuff
+
+        mainLayout = findViewById(R.id.frame);
+        stringhini.setOnTouchListener(onTouchListener());
+    }
+
+    private OnTouchListener onTouchListener() {
+        return new OnTouchListener() {
+            PointF DownPT = new PointF(); // Record Mouse Position When Pressed Down
+            PointF StartPT = new PointF(); // Record Start Position of 'img'
+
+
+            // int stringhiniCenterX = stringhiniX + stringhini.getWidth() / 2;
+            // int stringhiniCenterY = stringhiniY + stringhini.getHeight() /2;
+
+            // PointF String = new PointF();
+
+
+            int width = getScreenWidth() - 40;
+            int height = getScreenHeight() - 250;
+
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+
+                switch (event.getAction() & MotionEvent.ACTION_MASK) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        DownPT.set(event.getX(), event.getY());
+                        StartPT.set(stringhini.getX(), stringhini.getY());
+
+                        //String.set(stringhiniCenterX,stringhiniCenterY);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        stringhini.setX((int) (StartPT.x + event.getX() - DownPT.x));
+                        stringhini.setY((int) (StartPT.y + event.getY() - DownPT.y));
+
+                        stringhiniY = (int) (StartPT.y + event.getY() - DownPT.y);
+                        stringhiniX = (int) (StartPT.x + event.getX() - DownPT.x);
+
+                        StartPT.set(stringhini.getX(), stringhini.getY());
+
+                        if (stringhini.getX() < 0) {
+                            stringhini.setX(0);
+                        } else if (stringhini.getX() > width) {
+                            stringhini.setX(width);
+                        }
+
+                        if (stringhini.getY() < 0) {
+                            stringhini.setY(0);
+                        } else if (stringhini.getY() > height) {
+                            stringhini.setY(height);
+                        }
+
+                        break;
+                }
+                return true;
+            }
+        };
     }
 
     public void changePos() {
@@ -121,17 +206,21 @@ public class Play extends AppCompatActivity {
 
         // bettereric
         betterericY += 25;
-        if (betterericY > 0) {
-            betterericY = screenWidth - 5000;
-            betterericX = (int) Math.floor(Math.random() * (frameWidth - bettereric.getWidth()));
+        if (betterericY > 2000) {
+            betterericY = screenHeight - 2000;
+            betterericX = (int) Math.floor(Math.random() * (frameHeight - bettereric.getHeight()));
         }
         bettereric.setX(betterericX);
         bettereric.setY(betterericY);
+        System.out.println(betterericX);
+        System.out.println(betterericY);
+
+
 
         // sleepyeric
         sleepyericY -= 25;
         if (sleepyericY < 0) {
-            sleepyericY = screenWidth + 500;
+            sleepyericY = screenHeight + 500;
             sleepyericX = (int) Math.floor(Math.random() * (frameHeight - sleepyeric.getHeight()));
         }
         sleepyeric.setX(sleepyericX);
@@ -139,7 +228,9 @@ public class Play extends AppCompatActivity {
 
 
         // Move stringhini
-        if (action_flg == true) {
+
+        /* //Eric removed.
+        if (action_flg == true){
             // Touching
             stringhiniY -= 20;
         } else {
@@ -147,54 +238,83 @@ public class Play extends AppCompatActivity {
             stringhiniY += 20;
         }
 
-        // Check box position
-        if (stringhiniY < 0) stringhiniY = 0;
 
-        if (stringhiniY > frameHeight - stringhiniSize) stringhiniY = frameHeight - stringhiniSize;
+        // Check box position
+        if (stringhiniY < 0) stringhiniY =0;
+
+        if (stringhiniY > frameHeight - stringhiniSize)stringhiniY = frameHeight - stringhiniSize;
 
         stringhini.setY(stringhiniY);
+        */
 
         scoreLabel.setText("Score: " + score);
     }
 
     public void hitCheck() {
+        //stringhini center
+        int stringhiniCenterX = stringhiniX + stringhini.getWidth() / 2;
+        int stringhiniCenterY = stringhiniY + stringhini.getHeight() / 2;
 
-
-        // gooderic
         int goodericCenterX = goodericX + gooderic.getWidth() / 2;
         int goodericCenterY = goodericY + gooderic.getHeight() / 2;
-
-        // 0 <= goodericCenterX <= stringhiniWidth
-        // stringhiniY <= goodericCenterY <= stringhiniY + stringhiniHeight
-
-        if (0 <= goodericCenterX && goodericCenterX <= stringhiniSize && stringhiniY <= goodericCenterY && goodericCenterY <= stringhiniY + stringhiniSize) {
-            score += 10;
-            goodericX = -10;
-        }
 
         // bettereric
         int betterericCenterX = betterericX + bettereric.getWidth() / 2;
         int betterericCenterY = betterericY + bettereric.getHeight() / 2;
 
-        if (0 <= betterericCenterX && betterericCenterX <= stringhiniSize && stringhiniY <= betterericCenterY && betterericCenterY <= stringhiniY + stringhiniSize) {
-            score += 50;
-            betterericX = -10;
-        }
-
         // sleepyeric
         int sleepyericCenterX = sleepyericX + sleepyeric.getWidth() / 2;
         int sleepyericCenterY = sleepyericY + sleepyeric.getHeight() / 2;
-
-        if (0 <= sleepyericCenterX && sleepyericCenterX <= stringhiniSize && stringhiniY <= sleepyericCenterY && sleepyericCenterY <= stringhiniY + stringhiniSize) {
-            score -= 50;
-            betterericX = -10;
-        }
 
         // baderic
         int badericCenterX = badericX + baderic.getWidth() / 2;
         int badericCenterY = badericY + baderic.getHeight() / 2;
 
-        if (0 <= badericCenterX && badericCenterX <= stringhiniSize && stringhiniY <= badericCenterY && badericCenterY <= stringhiniY + stringhiniSize) {
+        //HITBOX SIZE
+        int reghitbox = 100;
+        int smallhitbox = 50;
+
+
+        System.out.println("stringhiniX");
+        System.out.println(stringhiniCenterX);
+        System.out.println("stringhiniY");
+        System.out.println(stringhiniCenterY);
+
+        System.out.println("goodericX");
+        System.out.println(goodericCenterX);
+        System.out.println("goodericY");
+        System.out.println(goodericCenterY);
+
+        System.out.println("Xdifference");
+        System.out.println(goodericCenterX - stringhiniCenterX);
+        System.out.println("Ydifference");
+        System.out.println(goodericCenterY - stringhiniCenterY);
+
+        // gooderic
+
+
+        // 0 <= goodericCenterX <= stringhiniWidth
+        // stringhiniY <= goodericCenterY <= stringhiniY + stringhiniHeight
+
+        if (reghitbox >= (Math.abs(goodericCenterX - stringhiniCenterX) + Math.abs(goodericCenterY - stringhiniCenterY))) {
+            score += 10;
+            goodericX = -10;
+        }
+
+
+        if (smallhitbox >= (Math.abs(betterericCenterX - stringhiniCenterX) + Math.abs(betterericCenterY - stringhiniCenterY))) {
+            score += 50;
+            betterericY = -10;
+        }
+
+
+        if (reghitbox >= (Math.abs(sleepyericCenterX - stringhiniCenterX) + Math.abs(sleepyericCenterY - stringhiniCenterY))) {
+            score -= 50;
+            sleepyericY = -10;
+        }
+
+
+        if (reghitbox >= (Math.abs(badericCenterX - stringhiniCenterX) + Math.abs(badericCenterY - stringhiniCenterY))) {
             // Stop Timer!!
             timer.cancel();
             timer = null;
@@ -220,6 +340,7 @@ public class Play extends AppCompatActivity {
             frameWidth = frame.getWidth();
 
             stringhiniY = (int) stringhini.getY();
+            stringhiniX = (int) stringhini.getX();
 
             // stringhini is a square
             stringhiniSize = stringhini.getHeight();
