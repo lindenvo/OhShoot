@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -14,17 +13,12 @@ import android.widget.TextView;
 public class Settings extends AppCompatActivity {
     private Button finished;
 
-    private Button characters;
 
     private TextView settings;
-    private Button back;
-    private CheckBox music;
-    private CheckBox soundeffects;
 
     private SeekBar volumeSeekbar = null;
     private AudioManager audioManager = null;
 
-    //private boolean musicmute = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

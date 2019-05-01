@@ -123,30 +123,29 @@ public class Play extends AppCompatActivity {
         setContentView(R.layout.activity_play);
 
 
-        scoreLabel = (TextView) findViewById(R.id.scoreLabel);
-        startLabel = (TextView) findViewById(R.id.startLabel);
-        stringhini = (ImageView) findViewById(R.id.stringhini);
-        bettereric = (ImageView) findViewById(R.id.bettereric);
-        gooderic = (ImageView) findViewById(R.id.gooderic);
-        goodericLR = (ImageView) findViewById(R.id.goodericlr);
-        goodericUD = (ImageView) findViewById(R.id.goodericud);
-        goodericDU = (ImageView) findViewById(R.id.goodericdu);
-        baderic = (ImageView) findViewById(R.id.baderic);
-        badericLR = (ImageView) findViewById(R.id.badericlr);
-        badericUD = (ImageView) findViewById(R.id.badericud);
-        badericDU = (ImageView) findViewById(R.id.badericdu);
-        sleepyeric = (ImageView) findViewById(R.id.sleepyeric);
+        scoreLabel = findViewById(R.id.scoreLabel);
+        startLabel = findViewById(R.id.startLabel);
+        stringhini = findViewById(R.id.stringhini);
+        bettereric = findViewById(R.id.bettereric);
+        gooderic =  findViewById(R.id.gooderic);
+        goodericLR = findViewById(R.id.goodericlr);
+        goodericUD =  findViewById(R.id.goodericud);
+        goodericDU =  findViewById(R.id.goodericdu);
+        baderic =  findViewById(R.id.baderic);
+        badericLR =  findViewById(R.id.badericlr);
+        badericUD =  findViewById(R.id.badericud);
+        badericDU =  findViewById(R.id.badericdu);
+        sleepyeric =  findViewById(R.id.sleepyeric);
 
-        Life1 = (ImageView) findViewById(R.id.life1);
-        Life2 = (ImageView) findViewById(R.id.life2);
-        Life3 = (ImageView) findViewById(R.id.life3);
+        Life1 =  findViewById(R.id.life1);
+        Life2 =  findViewById(R.id.life2);
+        Life3 =  findViewById(R.id.life3);
 
-        Death1 = (ImageView) findViewById(R.id.death1);
-        Death2 = (ImageView) findViewById(R.id.death2);
-        Death3 = (ImageView) findViewById(R.id.death3);
+        Death1 =  findViewById(R.id.death1);
+        Death2 =  findViewById(R.id.death2);
+        Death3 =  findViewById(R.id.death3);
 
 
-        //test = (ImageView) findViewById(R.id.gooderic);
 
         // Get screen size
         WindowManager wm = getWindowManager();
@@ -200,7 +199,7 @@ public class Play extends AppCompatActivity {
         mainLayout = findViewById(R.id.frame);
         stringhini.setOnTouchListener(onTouchListener());
 
-        game = MediaPlayer.create(getApplicationContext(), R.raw.game);
+        game = MediaPlayer.create(getApplicationContext(), R.raw.gamemusic);
         ow = MediaPlayer.create(getApplicationContext(), R.raw.ow);
         impact = MediaPlayer.create(getApplicationContext(), R.raw.impact);
         hurt = MediaPlayer.create(getApplicationContext(), R.raw.hurt);
@@ -227,10 +226,7 @@ public class Play extends AppCompatActivity {
             PointF StartPT = new PointF(); // Record Start Position of 'img'
 
 
-            // int stringhiniCenterX = stringhiniX + stringhini.getWidth() / 2;
-            // int stringhiniCenterY = stringhiniY + stringhini.getHeight() /2;
 
-            // PointF String = new PointF();
 
 
             int width = getScreenWidth() - 40;
@@ -246,7 +242,6 @@ public class Play extends AppCompatActivity {
                         DownPT.set( event.getX(), event.getY() );
                         StartPT.set( stringhini.getX(), stringhini.getY() );
 
-                        //String.set(stringhiniCenterX,stringhiniCenterY);
                         break;
 
                     case MotionEvent.ACTION_UP:
@@ -612,8 +607,6 @@ public class Play extends AppCompatActivity {
         int smallhitbox = 50;
 
 
-        // 0 <= goodericCenterX <= stringhiniWidth
-        // stringhiniY <= goodericCenterY <= stringhiniY + stringhiniHeight
 
         if (reghitbox >= (Math.abs(goodericCenterX-stringhiniCenterX) + Math.abs(goodericCenterY-stringhiniCenterY)))
         {
@@ -706,7 +699,7 @@ public class Play extends AppCompatActivity {
             start_flg = true;
 
 
-            FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
+            FrameLayout frame = findViewById(R.id.frame);
             frameHeight = frame.getHeight();
             frameWidth = frame.getWidth();
 

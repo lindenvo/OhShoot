@@ -19,7 +19,7 @@ public class result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        lose = MediaPlayer.create(getApplicationContext(), R.raw.lose);
+        lose = MediaPlayer.create(getApplicationContext(), R.raw.sad);
 
         lose.start();
         lose.setVolume((float)1.00,(float)1.00 );

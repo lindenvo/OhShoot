@@ -26,12 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         menu.start();
         menu.setLooping(true);
-        //sound = new SoundPlay(this);
-        //sound.playMenuMusic();
+
 
         buttonPLAY = findViewById(R.id.buttonPLAY);
         buttonSETTINGS = findViewById(R.id.buttonSETTINGS);
-        //instructions_button = (Button) findViewById(R.id.instructions);
         buttonCREDITS = findViewById(R.id.buttonCREDITS);
 
         buttonCREDITS.setOnClickListener(this);
@@ -52,13 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 launchsettingsActivity();
                 break;
             }
-/*
-            case R.id.buttonINSTRUCTIONS:
-            {
-                launchinstructionsActivity();
-                break;
-            }
-*/
+
             case R.id.buttonCREDITS: {
                 launchcreditsActivity();
                 break;
@@ -67,8 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /* The launchxxxxxxActivity method is used to start a new activity from within an onClickListener
-     * */
+
     private void launchplayActivity() {
 
         Intent playActivity = new Intent(MainActivity.this, Play.class);
@@ -86,15 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(settingsActivity);
     }
 
-    /*    private void launchinstructionsActivity()
-        {
 
-            Intent instructionsActivity = new Intent(MainActivity.this, Instructions.class);
-
-            //Launches the new activity
-            startActivity(instructionsActivity);
-        }
-        */
     private void launchcreditsActivity() {
 
         Intent creditsActivity = new Intent(MainActivity.this, Credits.class);
