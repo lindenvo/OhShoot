@@ -3,6 +3,7 @@ package com.example.afinal;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -11,15 +12,16 @@ import android.widget.TextView;
 
 public class result extends AppCompatActivity {
 
-    private SoundPlay sound;
+    MediaPlayer lose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        sound = new SoundPlay(this);
+        lose = MediaPlayer.create(getApplicationContext(), R.raw.lose);
 
+        lose.start();
         TextView scoreLabel = findViewById(R.id.scoreLabel);
         TextView highScoreLabel = findViewById(R.id.highScoreLabel);
 
@@ -43,11 +45,14 @@ public class result extends AppCompatActivity {
     }
 
     public void tryAgain(View view) {
+        lose.stop();
         startActivity(new Intent(getApplicationContext(), Play.class));
         //sound.playLoseMusic();
     }
 
     public void goHome(View view) {
+        lose.stop();
+
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         //sound.playMenuMusic();
     }

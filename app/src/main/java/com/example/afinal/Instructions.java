@@ -9,14 +9,12 @@ import android.widget.Button;
 public class Instructions extends AppCompatActivity {
 
     private Button finished;
-    private SoundPlay sound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructions);
 
-        sound = new SoundPlay(this);
         //sound.playMenuMusic();
 
 

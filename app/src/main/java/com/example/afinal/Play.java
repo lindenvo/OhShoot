@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,8 @@ public class Play extends AppCompatActivity {
 
     // Eric's Stuff
     ViewGroup mainLayout;
+    MediaPlayer game;
+    MediaPlayer lose;
 
 
     // Size
@@ -64,7 +67,6 @@ public class Play extends AppCompatActivity {
     // Initalize Class
     private Handler handler = new Handler();
     private Timer timer = new Timer();
-    private SoundPlay sound;
 
     // Status Check
     private boolean action_flg = false;
@@ -74,6 +76,8 @@ public class Play extends AppCompatActivity {
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
+
+
 
     public static int getScreenHeight() {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -85,7 +89,7 @@ public class Play extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-        sound = new SoundPlay(this);
+
 
         scoreLabel = findViewById(R.id.scoreLabel);
         startLabel = findViewById(R.id.startLabel);
@@ -120,6 +124,10 @@ public class Play extends AppCompatActivity {
 
         mainLayout = findViewById(R.id.frame);
         stringhini.setOnTouchListener(onTouchListener());
+
+        game = MediaPlayer.create(getApplicationContext(), R.raw.game);
+
+        game.start();
     }
 
     private OnTouchListener onTouchListener() {
@@ -179,6 +187,8 @@ public class Play extends AppCompatActivity {
                 return true;
             }
         };
+
+
     }
 
     public void changePos() {
@@ -318,7 +328,7 @@ public class Play extends AppCompatActivity {
             // Stop Timer!!
             timer.cancel();
             timer = null;
-
+            game.stop();
             // Show result
             Intent intent = new Intent(getApplicationContext(), result.class);
             intent.putExtra("SCORE", score);
@@ -332,8 +342,6 @@ public class Play extends AppCompatActivity {
 
         if (start_flg == false) {
             start_flg = true;
-            //sound.playGameMusic();
-
 
             FrameLayout frame = findViewById(R.id.frame);
             frameHeight = frame.getHeight();

@@ -22,14 +22,12 @@ public class Settings extends AppCompatActivity {
     private SeekBar volume;
 
 
-    private SoundPlay sound;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        sound = new SoundPlay(this);
-        sound.playMenuMusic();
+
         settings = findViewById(R.id.settings);
 
         //Initializes button to the parameters in result.xml

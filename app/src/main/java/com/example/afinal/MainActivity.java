@@ -13,15 +13,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonPLAY;
     private Button buttonSETTINGS;
     private Button buttonCREDITS;
-    MediaPlayer menumusic;
-    private SoundPlay sound;
+    MediaPlayer menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        menumusic = MediaPlayer.create(getApplicationContext(), R.raw.menu);
-        menumusic.start();
+        menu = MediaPlayer.create(getApplicationContext(), R.raw.menu);
+        menu.start();
         //sound = new SoundPlay(this);
         //sound.
         //sound.playMenuMusic();
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonPLAY: {
+                menu.stop();
                 launchplayActivity();
                 break;
             }
