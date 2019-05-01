@@ -53,16 +53,88 @@
             android:src="@drawable/baderic" />
 
         <ImageView
+            android:id="@+id/badericlr"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/badericlr" />
+
+        <ImageView
+            android:id="@+id/badericud"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/badericud" />
+
+        <ImageView
+            android:id="@+id/badericdu"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/badericdu" />
+
+        <ImageView
             android:id="@+id/gooderic"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:src="@drawable/gooderic" />
 
         <ImageView
+            android:id="@+id/goodericlr"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/goodericlr" />
+
+        <ImageView
+            android:id="@+id/goodericud"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/goodericud" />
+
+        <ImageView
+            android:id="@+id/goodericdu"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/goodericdu" />
+
+        <ImageView
             android:id="@+id/sleepyeric"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:src="@drawable/sleepyeric" />
+
+        <ImageView
+            android:id="@+id/life1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/life1" />
+
+        <ImageView
+            android:id="@+id/life2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/life2" />
+
+        <ImageView
+            android:id="@+id/life3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/life3" />
+
+        <ImageView
+            android:id="@+id/death1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/death1" />
+
+        <ImageView
+            android:id="@+id/death2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/death2" />
+
+        <ImageView
+            android:id="@+id/death3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/death3" />
 
     </FrameLayout>
 
