@@ -1,7 +1,6 @@
 package com.example.afinal;
 
 import android.content.Context;
-import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +9,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import static android.media.AudioManager.ADJUST_MUTE;
 
 
 public class Settings extends AppCompatActivity {
@@ -26,6 +23,8 @@ public class Settings extends AppCompatActivity {
 
     private SeekBar volumeSeekbar = null;
     private AudioManager audioManager = null;
+
+    //private boolean musicmute = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,7 @@ public class Settings extends AppCompatActivity {
     }
 
     public void goBack(View v) {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
     }
 
     public void initControls() {
@@ -71,8 +70,15 @@ public class Settings extends AppCompatActivity {
         });
     }
 
-    public void mutemusic() {
-        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                ADJUST_MUTE, 0);
-    }
+    /*public void onCheckboxClicked(View view) {
+
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId())
+        {
+            case R.id.music:
+                if (checked)
+
+        }
+    }*/
 }
