@@ -54,12 +54,13 @@ public class Play extends AppCompatActivity {
     ViewGroup mainLayout;
     MediaPlayer game;
     MediaPlayer ow;
-
+    MediaPlayer impact;
+    MediaPlayer hurt;
 
     // Size
     private int frameWidth;
     private int frameHeight;
-    private int stringhiniSize;
+     int stringhiniSize;
     private int screenWidth;
     private int screenHeight;
 
@@ -88,19 +89,7 @@ public class Play extends AppCompatActivity {
     private int sleepyericX;
     private int sleepyericY;
 
-    private int Life1X;
-    private int Life1Y;
-    private int Life2X;
-    private int Life2Y;
-    private int Life3X;
-    private int Life3Y;
 
-    private int Death1X;
-    private int Death1Y;
-    private int Death2X;
-    private int Death2Y;
-    private int Death3X;
-    private int Death3Y;
 
     private int Redones = 1;
 
@@ -114,11 +103,6 @@ public class Play extends AppCompatActivity {
     private int red3 = 0;
     private int red4 = 0;
 
-
-
-
-    //private int testY;
-    //private int testX;
 
     // Score
     private int score = 0;
@@ -218,6 +202,8 @@ public class Play extends AppCompatActivity {
 
         game = MediaPlayer.create(getApplicationContext(), R.raw.game);
         ow = MediaPlayer.create(getApplicationContext(), R.raw.ow);
+        impact = MediaPlayer.create(getApplicationContext(), R.raw.impact);
+        hurt = MediaPlayer.create(getApplicationContext(), R.raw.hurt);
 
         game.setVolume((float)0.75,(float)0.75 );
 
@@ -633,24 +619,32 @@ public class Play extends AppCompatActivity {
         {
             score += 10;
             goodericX = -10;
+            impact.start();
+
         }
 
         if (reghitbox >= (Math.abs(goodericCenterLRX-stringhiniCenterX) + Math.abs(goodericCenterLRY-stringhiniCenterY)))
         {
             score += 10;
             goodericLRX = 1501;
+            impact.start();
+
         }
 
         if (reghitbox >= (Math.abs(goodericCenterUDX-stringhiniCenterX) + Math.abs(goodericCenterUDY-stringhiniCenterY)))
         {
             score += 10;
             goodericUDX = 2501;
+            impact.start();
+
         }
 
         if (reghitbox >= (Math.abs(goodericCenterDUX-stringhiniCenterX) + Math.abs(goodericCenterDUY-stringhiniCenterY)))
         {
             score += 10;
             goodericDUX = -10;
+            impact.start();
+
         }
 
 
@@ -660,6 +654,8 @@ public class Play extends AppCompatActivity {
         {
             score += 50;
             betterericY = 2001;
+            impact.start();
+
         }
 
 
@@ -668,6 +664,7 @@ public class Play extends AppCompatActivity {
         {
             score -= 50;
             sleepyericY = -10;
+            hurt.start();
         }
 
 
