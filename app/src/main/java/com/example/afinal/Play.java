@@ -39,7 +39,7 @@ public class Play extends AppCompatActivity {
     // Eric's Stuff
     ViewGroup mainLayout;
     MediaPlayer game;
-    MediaPlayer lose;
+    MediaPlayer ow;
 
 
     // Size
@@ -126,8 +126,14 @@ public class Play extends AppCompatActivity {
         stringhini.setOnTouchListener(onTouchListener());
 
         game = MediaPlayer.create(getApplicationContext(), R.raw.game);
+        ow = MediaPlayer.create(getApplicationContext(), R.raw.ow);
+
+
+        game.setVolume((float)0.75,(float)0.75 );
 
         game.start();
+        game.setLooping(true);
+
     }
 
     private OnTouchListener onTouchListener() {
@@ -329,6 +335,8 @@ public class Play extends AppCompatActivity {
             timer.cancel();
             timer = null;
             game.stop();
+
+            ow.start();
             // Show result
             Intent intent = new Intent(getApplicationContext(), result.class);
             intent.putExtra("SCORE", score);

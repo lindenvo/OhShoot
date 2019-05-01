@@ -22,6 +22,10 @@ public class result extends AppCompatActivity {
         lose = MediaPlayer.create(getApplicationContext(), R.raw.lose);
 
         lose.start();
+        lose.setVolume((float)1.00,(float)1.00 );
+
+        lose.setLooping(true);
+
         TextView scoreLabel = findViewById(R.id.scoreLabel);
         TextView highScoreLabel = findViewById(R.id.highScoreLabel);
 
@@ -47,14 +51,12 @@ public class result extends AppCompatActivity {
     public void tryAgain(View view) {
         lose.stop();
         startActivity(new Intent(getApplicationContext(), Play.class));
-        //sound.playLoseMusic();
     }
 
     public void goHome(View view) {
         lose.stop();
 
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        //sound.playMenuMusic();
     }
 
 

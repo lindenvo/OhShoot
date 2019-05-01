@@ -20,9 +20,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         menu = MediaPlayer.create(getApplicationContext(), R.raw.menu);
+
+        menu.setVolume((float)0.75,(float)0.75 );
+
         menu.start();
+        menu.setLooping(true);
         //sound = new SoundPlay(this);
-        //sound.
         //sound.playMenuMusic();
 
         buttonPLAY = findViewById(R.id.buttonPLAY);
