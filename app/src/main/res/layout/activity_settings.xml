@@ -1,61 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    tools:context=".MainActivity">
-
-    <CheckBox
-        android:id="@+id/soundeffects"
-        android:layout_width="147dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:buttonTint="@color/colorAccent"
-        android:clickable="true"
-        android:fontFamily="monospace"
-        android:text="SOUND EFFECTS"
-        android:textAlignment="textEnd"
-        android:textColor="?attr/colorBackgroundFloating"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music" />
+    android:background="@color/black"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".result">
 
     <TextView
         android:id="@+id/settings"
-        android:layout_width="180dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="monospace"
         android:text="SETTINGS"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/VOLUME"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/VOLUME"
+        android:layout_width="110dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="monospace"
+        android:text="VOLUME"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp" />
+
+    <SeekBar
+        android:id="@+id/volumecontrol"
+        android:layout_width="253dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:maxHeight="3dp"
+        android:minHeight="3dp"
+        android:progressDrawable="@drawable/volume_control"
+        android:thumbTint="@color/colorAccent" />
 
     <CheckBox
         android:id="@+id/music"
         android:layout_width="147dp"
         android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:buttonTint="@color/colorAccent"
         android:clickable="true"
         android:fontFamily="monospace"
@@ -63,44 +56,42 @@
         android:textAlignment="textEnd"
         android:textColor="?attr/colorBackgroundFloating"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/soundeffects"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/volumecontrol" />
+
+
+    <CheckBox
+        android:id="@+id/soundeffects"
+        android:layout_width="147dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:buttonTint="@color/colorAccent"
+        android:clickable="true"
+        android:fontFamily="monospace"
+        android:text="SOUND EFFECTS"
+        android:textAlignment="textEnd"
+        android:textColor="?attr/colorBackgroundFloating"
+        android:textSize="24sp"
 
     <Button
         android:id="@+id/characters"
         android:layout_width="174dp"
         android:layout_height="56dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_bg_rounded_cornerspink"
         android:fontFamily="monospace"
         android:padding="10dp"
         android:text="Characters"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/backbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/soundeffects" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/backbutton"
         android:layout_width="174dp"
         android:layout_height="56dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_bg_rounded_cornerspink"
         android:fontFamily="monospace"
         android:padding="10dp"
@@ -108,44 +99,8 @@
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characters" />
+ />
 
-    <SeekBar
-        android:id="@+id/volumecontrol"
-        android:layout_width="253dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="283dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:maxHeight="3dp"
-        android:minHeight="3dp"
-        android:thumbTint="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/VOLUME"
-        android:layout_width="110dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:fontFamily="monospace"
-        android:text="VOLUME"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/volumecontrol"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+</LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
