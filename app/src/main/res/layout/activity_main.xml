@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonCREDITS"
+        android:layout_width="156dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="238dp"
+        android:background="@drawable/button_bg_rounded_corners"
+        android:padding="10dp"
+        android:text="CREDITS"
+        android:textAlignment="center"
+
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSETTINGS" />
+
+    <Button
+        android:id="@+id/buttonSETTINGS"
+        android:layout_width="156dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_bg_rounded_corners"
+        android:padding="10dp"
+        android:text="SETTINGS"
+        android:textAlignment="center"
+
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCREDITS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPLAY" />
+
+    <Button
+        android:id="@+id/buttonPLAY"
+        android:layout_width="156dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="333dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_bg_rounded_corners"
+        android:padding="10dp"
+        android:text="PLAY"
+        android:textAlignment="center"
+
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSETTINGS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+</android.support.constraint.ConstraintLayout>
