@@ -64,21 +64,17 @@ public class Settings extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar arg0, int progress, boolean arg2) {
+
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
                         progress, 0);
+
             }
+
         });
     }
 
-    /*public void onCheckboxClicked(View view) {
-
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch(view.getId())
-        {
-            case R.id.music:
-                if (checked)
-
-        }
-    }*/
+    public void mutemusic(View view) {
+        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_TOGGLE_MUTE,
+                0);
+    }
 }
