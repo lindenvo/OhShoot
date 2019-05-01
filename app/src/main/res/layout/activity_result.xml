@@ -11,44 +11,64 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8sp"
         android:text="SEGMENTATION FAULT"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:typeface="monospace" />
 
     <TextView
         android:id="@+id/scoreLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:text="150"
         android:textColor="@color/white"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:typeface="monospace"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/highScoreLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"
         android:text="High Score: 300"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="24sp"
+        android:typeface="monospace" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:id="@+id/tryagain"
+        android:layout_width="174dp"
+        android:layout_height="56dp"
+        android:background="@drawable/button_bg_rounded_cornersblue"
+        android:fontFamily="monospace"
         android:onClick="tryAgain"
+        android:padding="10dp"
         android:text="Try Again"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/homebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="174dp"
+        android:layout_height="56dp"
+        android:background="@drawable/button_bg_rounded_cornersblue"
+        android:fontFamily="monospace"
         android:onClick="goHome"
+        android:padding="10dp"
         android:text="Home"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginBottom="100dp"/>
 
 </LinearLayout>
