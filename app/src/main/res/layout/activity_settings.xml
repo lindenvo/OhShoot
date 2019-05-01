@@ -44,36 +44,22 @@
         android:thumbTint="@color/colorAccent" />
 
     <CheckBox
-        android:id="@+id/music"
+        android:id="@+id/sound"
         android:layout_width="147dp"
         android:layout_height="41dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:buttonTint="@color/colorAccent"
-        android:checked="true"
         android:clickable="true"
+        android:checked="true"
         android:fontFamily="monospace"
-        android:onClick="mutemusic"
-        android:text="MUSIC"
+        android:onClick="onClick"
+        android:text="Sound"
         android:textAlignment="textEnd"
         android:textColor="?attr/colorBackgroundFloating"
         android:textSize="24sp" />
 
 
-    <CheckBox
-        android:id="@+id/soundeffects"
-        android:layout_width="147dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:buttonTint="@color/colorAccent"
-        android:checked="true"
-        android:clickable="true"
-        android:fontFamily="monospace"
-        android:text="SOUND EFFECTS"
-        android:textAlignment="textEnd"
-        android:textColor="?attr/colorBackgroundFloating"
-        android:textSize="24sp" />
 
     <Button
         android:id="@+id/backbutton"
