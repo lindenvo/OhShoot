@@ -16,7 +16,7 @@ public class Settings extends AppCompatActivity {
     private Button characters;
 
     private TextView settings;
-
+    private Button back;
     private CheckBox music;
     private CheckBox soundeffects;
     private SeekBar volume;
@@ -29,11 +29,11 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         sound = new SoundPlay(this);
-        //sound.playMenuMusic();
+        sound.playMenuMusic();
         settings = findViewById(R.id.settings);
 
         //Initializes button to the parameters in result.xml
-        //finished = findViewById(R.id.back);
+        finished = findViewById(R.id.backbutton);
     }
 
     public void goBack(View v) {
