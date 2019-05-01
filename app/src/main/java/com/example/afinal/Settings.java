@@ -11,6 +11,8 @@ import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import static android.media.AudioManager.ADJUST_MUTE;
+
 
 public class Settings extends AppCompatActivity {
     private Button finished;
@@ -67,5 +69,10 @@ public class Settings extends AppCompatActivity {
                         progress, 0);
             }
         });
+    }
+
+    public void mutemusic() {
+        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
+                ADJUST_MUTE, 0);
     }
 }
