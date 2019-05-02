@@ -1,5 +1,4 @@
 
-
 package com.example.afinal;
 
 import android.content.Intent;
@@ -30,7 +29,7 @@ import android.view.ViewGroup;
 public class Play extends AppCompatActivity {
 
     private TextView scoreLabel;
-    private TextView startLabel;
+    private ImageView startLabel;
     private ImageView stringhini;
 
     private ImageView gooderic;
@@ -131,7 +130,6 @@ public class Play extends AppCompatActivity {
     private double sleepyericvert = Math.random();
     private double sleepyerichor = Math.random();
 
-    private int counter = 0;
     // Score
     private int score = 0;
 
@@ -233,14 +231,15 @@ public class Play extends AppCompatActivity {
         Death2.setY(0);
 
         //center stringhini
-        stringhini.setX(frameWidth/4);
-        stringhini.setY(frameHeight/4);
+        stringhini.setX(getScreenWidth()/3);
+        stringhini.setY(getScreenHeight()/3);
 
         //Eric's Stuff
 
         mainLayout = findViewById(R.id.frame);
         stringhini.setOnTouchListener(onTouchListener());
-        
+
+
         game = MediaPlayer.create(getApplicationContext(), R.raw.gamemusic);
         ow = MediaPlayer.create(getApplicationContext(), R.raw.ow);
         impact = MediaPlayer.create(getApplicationContext(), R.raw.impact);
@@ -251,6 +250,9 @@ public class Play extends AppCompatActivity {
 
         game.start();
         game.setLooping(true);
+
+        stringhini.setVisibility(View.GONE);
+
     }
 
     // Eric's Stuff
@@ -269,6 +271,8 @@ public class Play extends AppCompatActivity {
 
             int width = getScreenWidth() - 40;
             int height = getScreenHeight() - 250;
+
+
 
             @SuppressLint("ClickableViewAccessibility")
             @Override
@@ -417,7 +421,7 @@ public class Play extends AppCompatActivity {
         // bettereric
         if ((bettererichor >= 0) && (bettererichor < 0.5))
         {
-            betterericX -= betterericSpeedX * Speed;
+            betterericX -= 1.5 * betterericSpeedX * Speed;
             betterericY += ((-.5 + (int) Math.random()) * Offset * .1);
             if (betterericX < lowX) {
                 betterericX = screenWidth + 7500 + 2500 * (int) Math.random();
@@ -430,7 +434,7 @@ public class Play extends AppCompatActivity {
 
         if ((bettererichor >= 0.5) && (bettererichor <= 1.0))
         {
-            betterericX += betterericSpeedX * Speed;
+            betterericX += 1.5 * betterericSpeedX * Speed;
             betterericY += ((-.5 + (int) Math.random()) * Offset * .1);
             if (betterericX > highX) {
                 betterericX = -7500 - 2500 * (int) Math.random();
@@ -444,7 +448,7 @@ public class Play extends AppCompatActivity {
         // betterericUD
         if ((betterericvert >= 0.5) && (betterericvert <= 1.0))
         {
-            bettereric2Y += betterericSpeedY * Speed;
+            bettereric2Y += 1.5 * betterericSpeedY * Speed;
             bettereric2X += ((-.5 + (int) Math.random()) * Offset * .1);
             if (bettereric2Y > highY) {
                 bettereric2Y = -7500 - 2500 * (int) Math.random();
@@ -457,7 +461,7 @@ public class Play extends AppCompatActivity {
 
         if ((betterericvert < 0.5) && (betterericvert >= 0))
         {
-            bettereric2Y -= betterericSpeedY * Speed;
+            bettereric2Y -= 1.5 * betterericSpeedY * Speed;
             bettereric2X += ((-.5 + (int) Math.random()) * Offset * .1);
             if (bettereric2Y < lowY) {
                 bettereric2Y = screenHeight + 7500 + 2500 * (int) Math.random();
@@ -571,7 +575,7 @@ public class Play extends AppCompatActivity {
                 // Stop Timer!!
                 timer.cancel();
                 timer = null;
-
+                game.stop();
                 // Show result
                 Intent intent = new Intent(getApplicationContext(), result.class);
                 intent.putExtra("SCORE", score);
@@ -731,7 +735,7 @@ public class Play extends AppCompatActivity {
 
         if (reghitbox >= (Math.abs(goodericCenterX-stringhiniCenterX) + Math.abs(goodericCenterY-stringhiniCenterY)))
         {
-            score += 50;
+            score += 10;
             goodericX = screenWidth + 1000;
             goodericY = (int) Math.floor(Math.random()*(frameHeight - gooderic.getHeight()));
             gooderic.setX(goodericX);
@@ -741,7 +745,7 @@ public class Play extends AppCompatActivity {
 
         if (reghitbox >= (Math.abs(goodericCenterLRX-stringhiniCenterX) + Math.abs(goodericCenterLRY-stringhiniCenterY)))
         {
-            score += 50;
+            score += 10;
             goodericLRX = -1000;
             goodericLRY = (int) Math.floor(Math.random()*(frameHeight - goodericLR.getHeight()));
             goodericLR.setX(goodericLRX);
@@ -751,7 +755,7 @@ public class Play extends AppCompatActivity {
 
         if (reghitbox >= (Math.abs(goodericCenterUDX-stringhiniCenterX) + Math.abs(goodericCenterUDY-stringhiniCenterY)))
         {
-            score += 50;
+            score += 10;
             goodericUDY = -1000;
             goodericUDX = (int) Math.floor(Math.random()*(frameWidth - goodericUD.getWidth()));
             goodericUD.setX(goodericUDX);
@@ -761,7 +765,7 @@ public class Play extends AppCompatActivity {
 
         if (reghitbox >= (Math.abs(goodericCenterDUX-stringhiniCenterX) + Math.abs(goodericCenterDUY-stringhiniCenterY)))
         {
-            score += 50;
+            score += 10;
             goodericDUY = screenHeight + 1000;
             goodericDUX = (int) Math.floor(Math.random()*(frameWidth - goodericDU.getWidth()));
             goodericDU.setX(goodericDUX);
@@ -962,6 +966,7 @@ public class Play extends AppCompatActivity {
             stringhiniSize = stringhini.getHeight();
 
             startLabel.setVisibility(View.GONE);
+            stringhini.setVisibility(View.VISIBLE);
 
             // Start the timer
             timer.schedule(new TimerTask() {
@@ -1001,5 +1006,4 @@ public class Play extends AppCompatActivity {
 
         return super.dispatchKeyEvent(event);
     }
-
 }
