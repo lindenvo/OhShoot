@@ -13,7 +13,8 @@
         android:background="@color/black"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:text="Score: "
+        android:fontFamily="monospace"
+        android:text="SCORE: "
         android:textColor="@color/white"
         android:textSize="18sp" />
 
