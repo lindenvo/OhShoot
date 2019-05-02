@@ -1,12 +1,13 @@
 
+
 package com.example.afinal;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -59,6 +60,7 @@ public class Play extends AppCompatActivity {
     MediaPlayer ow;
     MediaPlayer impact;
     MediaPlayer hurt;
+    MediaPlayer good;
 
 
     // Size
@@ -72,11 +74,7 @@ public class Play extends AppCompatActivity {
     private int stringhiniX;
     private int stringhiniY;
 
-    private int good
-        
-        
-        
-        Y;
+    private int goodericY;
     private int goodericX;
     private int goodericLRY;
     private int goodericLRX;
@@ -220,7 +218,7 @@ public class Play extends AppCompatActivity {
         bettereric2.setX(-1000);
         bettereric2.setY(-1000);
 
-        scoreLabel.setText("Score: 0");
+        scoreLabel.setText("SCORE: 0");
 
         Life1.setX(700);
         Life1.setY(0);
@@ -366,7 +364,7 @@ public class Play extends AppCompatActivity {
             badericX -= badericSpeedX * Speed * red1;
             badericY += ((-.5 + (int) Math.random()) * Offset * red1);
             if (badericX < lowX) {
-                badericX = screenWidth + 3500;
+                badericX = screenWidth + 1000;
                 badericY = (int) Math.floor(Math.random() * (frameHeight - baderic.getHeight()));
                 baderichor = Math.random();
             }
@@ -379,7 +377,7 @@ public class Play extends AppCompatActivity {
             badericX += badericSpeedX * Speed * red1;
             badericY += ((-.5 + (int) Math.random()) * Offset * red1);
             if (badericX > highX) {
-                badericX = -3500;
+                badericX = -1000;
                 badericY = (int) Math.floor(Math.random()*(frameHeight - baderic.getHeight()));
                 baderichor = Math.random();
             }
@@ -394,7 +392,7 @@ public class Play extends AppCompatActivity {
             baderic2Y += badericSpeedY * Speed * red2;
             baderic2X += ((-.5 + (int) Math.random()) * Offset * red2);
             if (baderic2Y > highY) {
-                baderic2Y = -3000;
+                baderic2Y = -1000;
                 baderic2X = (int) Math.floor(Math.random() * (frameWidth - baderic2.getWidth()));
                 badericvert = Math.random();
             }
@@ -407,7 +405,7 @@ public class Play extends AppCompatActivity {
             baderic2Y -= badericSpeedY * Speed * red2;
             baderic2X += ((-.5 + (int) Math.random()) * Offset * red2);
             if (baderic2Y < lowY) {
-                baderic2Y = screenHeight + 3000;
+                baderic2Y = screenHeight + 1000;
                 baderic2X = (int) Math.floor(Math.random() * (frameWidth - baderic2.getWidth()));
                 badericvert = Math.random();
             }
@@ -420,9 +418,9 @@ public class Play extends AppCompatActivity {
         if ((bettererichor >= 0) && (bettererichor < 0.5))
         {
             betterericX -= betterericSpeedX * Speed;
-            betterericY += ((-.5 + (int) Math.random()) * Offset);
+            betterericY += ((-.5 + (int) Math.random()) * Offset * .1);
             if (betterericX < lowX) {
-                betterericX = screenWidth + 7500;
+                betterericX = screenWidth + 7500 + 2500 * (int) Math.random();
                 betterericY = (int) Math.floor(Math.random() * (frameHeight - bettereric.getHeight()));
                 bettererichor = Math.random();
             }
@@ -433,9 +431,9 @@ public class Play extends AppCompatActivity {
         if ((bettererichor >= 0.5) && (bettererichor <= 1.0))
         {
             betterericX += betterericSpeedX * Speed;
-            betterericY += ((-.5 + (int) Math.random()) * Offset);
+            betterericY += ((-.5 + (int) Math.random()) * Offset * .1);
             if (betterericX > highX) {
-                betterericX = -7500 ;
+                betterericX = -7500 - 2500 * (int) Math.random();
                 betterericY = (int) Math.floor(Math.random()*(frameHeight - bettereric.getHeight()));
                 bettererichor = Math.random();
             }
@@ -447,9 +445,9 @@ public class Play extends AppCompatActivity {
         if ((betterericvert >= 0.5) && (betterericvert <= 1.0))
         {
             bettereric2Y += betterericSpeedY * Speed;
-            bettereric2X += ((-.5 + (int) Math.random()) * Offset);
+            bettereric2X += ((-.5 + (int) Math.random()) * Offset * .1);
             if (bettereric2Y > highY) {
-                bettereric2Y = -7500;
+                bettereric2Y = -7500 - 2500 * (int) Math.random();
                 bettereric2X = (int) Math.floor(Math.random() * (frameWidth - bettereric2.getWidth()));
                 betterericvert = Math.random();
             }
@@ -460,9 +458,9 @@ public class Play extends AppCompatActivity {
         if ((betterericvert < 0.5) && (betterericvert >= 0))
         {
             bettereric2Y -= betterericSpeedY * Speed;
-            bettereric2X += ((-.5 + (int) Math.random()) * Offset);
+            bettereric2X += ((-.5 + (int) Math.random()) * Offset * .1);
             if (bettereric2Y < lowY) {
-                bettereric2Y = screenHeight + 7500;
+                bettereric2Y = screenHeight + 7500 + 2500 * (int) Math.random();
                 bettereric2X = (int) Math.floor(Math.random() * (frameWidth - bettereric2.getWidth()));
                 betterericvert = Math.random();
             }
@@ -505,7 +503,7 @@ public class Play extends AppCompatActivity {
             sleepyeric2Y += sleepyericSpeedY * Speed;
             sleepyeric2X += ((-.5 + (int) Math.random()) * Offset);
             if (sleepyeric2Y > highY) {
-                sleepyeric2Y = -7500;
+                sleepyeric2Y = -2000;
                 sleepyeric2X = (int) Math.floor(Math.random() * (frameWidth - sleepyeric2.getWidth()));
                 sleepyericvert = Math.random();
             }
@@ -518,7 +516,7 @@ public class Play extends AppCompatActivity {
             sleepyeric2Y -= sleepyericSpeedY * Speed;
             sleepyeric2X += ((-.5 + (int) Math.random()) * Offset);
             if (sleepyeric2Y < lowY) {
-                sleepyeric2Y = screenHeight + 7500;
+                sleepyeric2Y = screenHeight + 2000;
                 sleepyeric2X = (int) Math.floor(Math.random() * (frameWidth - sleepyeric2.getWidth()));
                 sleepyericvert = Math.random();
             }
@@ -738,6 +736,7 @@ public class Play extends AppCompatActivity {
             goodericY = (int) Math.floor(Math.random()*(frameHeight - gooderic.getHeight()));
             gooderic.setX(goodericX);
             gooderic.setY(goodericY);
+            impact.start();
         }
 
         if (reghitbox >= (Math.abs(goodericCenterLRX-stringhiniCenterX) + Math.abs(goodericCenterLRY-stringhiniCenterY)))
@@ -747,6 +746,7 @@ public class Play extends AppCompatActivity {
             goodericLRY = (int) Math.floor(Math.random()*(frameHeight - goodericLR.getHeight()));
             goodericLR.setX(goodericLRX);
             goodericLR.setY(goodericLRY);
+            impact.start();
         }
 
         if (reghitbox >= (Math.abs(goodericCenterUDX-stringhiniCenterX) + Math.abs(goodericCenterUDY-stringhiniCenterY)))
@@ -756,6 +756,7 @@ public class Play extends AppCompatActivity {
             goodericUDX = (int) Math.floor(Math.random()*(frameWidth - goodericUD.getWidth()));
             goodericUD.setX(goodericUDX);
             goodericUD.setY(goodericUDY);
+            impact.start();
         }
 
         if (reghitbox >= (Math.abs(goodericCenterDUX-stringhiniCenterX) + Math.abs(goodericCenterDUY-stringhiniCenterY)))
@@ -765,6 +766,7 @@ public class Play extends AppCompatActivity {
             goodericDUX = (int) Math.floor(Math.random()*(frameWidth - goodericDU.getWidth()));
             goodericDU.setX(goodericDUX);
             goodericDU.setY(goodericDUY);
+            impact.start();
         }
 
 
@@ -777,6 +779,7 @@ public class Play extends AppCompatActivity {
                 LIVES +=1;
             }
             score += 50;
+            good.start();
             if ((bettererichor >= 0) && (bettererichor < 0.5))
             {
                     betterericX = screenWidth + 7500;
@@ -804,6 +807,7 @@ public class Play extends AppCompatActivity {
                 LIVES +=1;
             }
             score += 50;
+            good.start();
 
             if ((betterericvert >= 0.5) && (betterericvert <= 1.0))
             {
@@ -831,10 +835,12 @@ public class Play extends AppCompatActivity {
         {
             if (score >= 20) {
                 score -= 20;
+                hurt.start();
             }
 
             if ((10 <= score )&&(score < 20)) {
                 score -= 10;
+                hurt.start();
             }
 
             if ((sleepyerichor >= 0) && (sleepyerichor < 0.5))
@@ -860,10 +866,12 @@ public class Play extends AppCompatActivity {
         {
             if (score >= 20) {
                 score -= 20;
+                hurt.start();
             }
 
             if ((10 <= score )&&(score < 20)) {
                 score -= 10;
+                hurt.start();
             }
 
             if ((sleepyericvert >= 0.5) && (sleepyericvert <= 1.0))
@@ -890,6 +898,7 @@ public class Play extends AppCompatActivity {
         if (reghitbox >= (Math.abs(badericCenterX-stringhiniCenterX) + Math.abs(badericCenterY-stringhiniCenterY)))
         {
             LIVES -= 1;
+            ow.start();
             if ((baderichor >= 0) && (baderichor < 0.5))
             {
                     badericX = screenWidth + 3500;
@@ -913,6 +922,7 @@ public class Play extends AppCompatActivity {
         if (reghitbox >= (Math.abs(baderic2CenterX-stringhiniCenterX) + Math.abs(baderic2CenterY-stringhiniCenterY)))
         {
             LIVES -= 1;
+            ow.start();
             if ((badericvert >= 0.5) && (badericvert <= 1.0))
             {
                     baderic2Y = -3000;
@@ -991,4 +1001,5 @@ public class Play extends AppCompatActivity {
 
         return super.dispatchKeyEvent(event);
     }
+
 }
