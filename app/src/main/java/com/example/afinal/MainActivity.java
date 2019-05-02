@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         menu = MediaPlayer.create(getApplicationContext(), R.raw.menu);
 
-        menu.setVolume((float)0.75,(float)0.75 );
+        menu.setVolume((float) 1.00, (float) 1.00);
 
         menu.start();
         menu.setLooping(true);

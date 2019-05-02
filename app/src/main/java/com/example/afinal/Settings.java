@@ -16,7 +16,7 @@ public class Settings extends AppCompatActivity {
     private TextView settings;
     private SeekBar volumeSeekbar = null;
     private AudioManager audioManager = null;
-    boolean checked = true;
+    private boolean checked = true;
     private CheckBox soundEnable;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class Settings extends AppCompatActivity {
 
         //Initializes button to the parameters in result.xml
         finished = findViewById(R.id.backbutton);
-
     }
 
 
@@ -41,6 +40,7 @@ public class Settings extends AppCompatActivity {
                 .getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         volumeSeekbar.setProgress(audioManager
                 .getStreamVolume(AudioManager.STREAM_MUSIC));
+
 
         volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -70,6 +70,11 @@ public class Settings extends AppCompatActivity {
                     audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
                             AudioManager.ADJUST_MUTE, 0);
                     volumeSeekbar.setEnabled(false);
+                    /*volumeSeekbar.setMax(audioManager
+                            .getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+                    volumeSeekbar.setProgress(audioManager
+                            .getStreamVolume(AudioManager.STREAM_MUSIC));
+                    */
 
                 } else {
 
@@ -77,10 +82,11 @@ public class Settings extends AppCompatActivity {
                     audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
                             AudioManager.ADJUST_UNMUTE, 0);
                     volumeSeekbar.setEnabled(true);
-                    volumeSeekbar.setMax(audioManager
+
+                    /*volumeSeekbar.setMax(audioManager
                             .getStreamMaxVolume(AudioManager.STREAM_MUSIC));
                     volumeSeekbar.setProgress(audioManager
-                            .getStreamVolume(AudioManager.STREAM_MUSIC));
+                            .getStreamVolume(AudioManager.STREAM_MUSIC));*/
                 }
                 break;
         }
