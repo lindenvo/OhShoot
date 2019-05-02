@@ -55,6 +55,10 @@ public class Play extends AppCompatActivity {
 
     // Eric's Stuff
     ViewGroup mainLayout;
+    MediaPlayer game;
+    MediaPlayer ow;
+    MediaPlayer impact;
+    MediaPlayer hurt;
 
 
     // Size
@@ -68,7 +72,11 @@ public class Play extends AppCompatActivity {
     private int stringhiniX;
     private int stringhiniY;
 
-    private int goodericY;
+    private int good
+        
+        
+        
+        Y;
     private int goodericX;
     private int goodericLRY;
     private int goodericLRX;
@@ -234,6 +242,17 @@ public class Play extends AppCompatActivity {
 
         mainLayout = findViewById(R.id.frame);
         stringhini.setOnTouchListener(onTouchListener());
+        
+        game = MediaPlayer.create(getApplicationContext(), R.raw.gamemusic);
+        ow = MediaPlayer.create(getApplicationContext(), R.raw.ow);
+        impact = MediaPlayer.create(getApplicationContext(), R.raw.impact);
+        hurt = MediaPlayer.create(getApplicationContext(), R.raw.hurt);
+        good = MediaPlayer.create(getApplicationContext(), R.raw.good);
+
+        game.setVolume((float)0.75,(float)0.75 );
+
+        game.start();
+        game.setLooping(true);
     }
 
     // Eric's Stuff
