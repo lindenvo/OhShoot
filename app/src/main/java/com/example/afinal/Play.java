@@ -443,7 +443,6 @@ public class Play extends AppCompatActivity {
             case 0:
                 // Stop Timer!!
                 timer.cancel();
-                timer = null;
                 game.stop();
                 // Show result
                 Intent intent = new Intent(getApplicationContext(), result.class);
