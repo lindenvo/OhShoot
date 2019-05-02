@@ -54,7 +54,7 @@
         android:clickable="true"
         android:fontFamily="monospace"
         android:onClick="onClick"
-        android:text="Sound"
+        android:text="SOUND"
         android:textAlignment="textEnd"
         android:textColor="?attr/colorBackgroundFloating"
         android:textSize="24sp" />
